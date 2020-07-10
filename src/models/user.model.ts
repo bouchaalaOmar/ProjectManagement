@@ -1,33 +1,60 @@
-import {Model, model, property} from '@loopback/repository';
+// Copyright IBM Corp. 2019,2020. All Rights Reserved.
+// Node module: loopback4-example-shopping
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
 
-@model({settings: {strict: false}})
-export class User extends Model {
+import {Entity, model, property, hasMany, hasOne} from '@loopback/repository';
+import {UserCredentials} from './user-credentials.model';
+
+@model({
+  settings: {
+    indexes: {
+      uniqueEmail: {
+        keys: {
+          email: 1,
+        },
+        options: {
+          unique: true,
+        },
+      },
+    },
+  },
+})
+export class User extends Entity {
+  @property({
+    type: 'string',
+    id: true,
+  })
+  id: string;
+
   @property({
     type: 'string',
     required: true,
   })
-  name: string;
+  email: string;
 
   @property({
-    type: 'number',
-    id: true,
-    generated: true,
+    type: 'string',
   })
-  id?: number;
+  firstName?: string;
 
-  // Define well-known properties here
+  @property({
+    type: 'string',
+  })
+  lastName?: string;
 
-  // Indexer property to allow additional data
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [prop: string]: any;
+
+  @hasOne(() => UserCredentials)
+  userCredentials: UserCredentials;
+
+
+  @property({
+    type: 'array',
+    itemType: 'string',
+  })
+  roles?: string[];
 
   constructor(data?: Partial<User>) {
     super(data);
   }
 }
-
-export interface UserRelations {
-  // describe navigational properties here
-}
-
-export type UserWithRelations = User & UserRelations;
