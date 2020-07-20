@@ -37,8 +37,8 @@ import {
   UserServiceBindings,
 } from '../keys';
 import _ from 'lodash';
-import {OPERATION_SECURITY_SPEC} from '../utils/security-spec';
-import {basicAuthorization} from '../services/basic.authorizor';
+import {OPERATION_SECURITY_SPECIFICATION} from "../utils/security-spec";
+import {basicAuthorization} from "../services/basic.authorizor";
 
 @model()
 export class NewUserRequest extends User {
@@ -104,7 +104,7 @@ export class UserController {
 
       // set the password
       await this.userRepository
-        .userCredentials(savedUser.id)
+        .userCredentials(savedUser.email)
         .create({password});
 
       return savedUser;
@@ -119,7 +119,7 @@ export class UserController {
   }
 
   @put('/users/{userId}', {
-    security: OPERATION_SECURITY_SPEC,
+    security: OPERATION_SECURITY_SPECIFICATION,
     responses: {
       '200': {
         description: 'User',
@@ -156,8 +156,32 @@ export class UserController {
     }
   }
 
+    @get('/users', {
+        security: OPERATION_SECURITY_SPECIFICATION,
+        responses: {
+            '200': {
+                description: 'User',
+                content: {
+                    'application/json': {
+                        schema: {
+                            'x-ts-type': User,
+                        },
+                    },
+                },
+            },
+        },
+    })
+    @authenticate('jwt')
+    @authorize({
+        allowedRoles: ['admin'],
+        voters: [basicAuthorization],
+    })
+    async find(): Promise<User[]> {
+        return this.userRepository.find();
+    }
+
   @get('/users/{userId}', {
-    security: OPERATION_SECURITY_SPEC,
+    security: OPERATION_SECURITY_SPECIFICATION,
     responses: {
       '200': {
         description: 'User',
@@ -181,7 +205,7 @@ export class UserController {
   }
 
   @get('/users/me', {
-    security: OPERATION_SECURITY_SPEC,
+    security: OPERATION_SECURITY_SPECIFICATION,
     responses: {
       '200': {
         description: 'The current user profile',
@@ -227,7 +251,7 @@ export class UserController {
   })
   async login(
     @requestBody(CredentialsRequestBody) credentials: Credentials,
-  ): Promise<{token: string}> {
+  ): Promise<{token: string, info: object}> {
     // ensure the user exists, and the password is correct
     const user = await this.userService.verifyCredentials(credentials);
 
@@ -237,6 +261,6 @@ export class UserController {
     // create a JSON Web Token based on the user profile
     const token = await this.jwtService.generateToken(userProfile);
 
-    return {token};
+    return {token:token, info:user};
   }
 }

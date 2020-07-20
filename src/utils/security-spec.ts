@@ -3,4 +3,4 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-export const OPERATION_SECURITY_SPEC = [{jwt: []}];
+export const OPERATION_SECURITY_SPECIFICATION = [{jwt: []}];

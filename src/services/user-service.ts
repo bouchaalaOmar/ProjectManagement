@@ -35,7 +35,7 @@ export class MyUserService implements UserService<User, Credentials> {
     }
 
     const credentialsFound = await this.userRepository.findCredentials(
-      foundUser.id,
+      foundUser.email,
     );
     if (!credentialsFound) {
       throw new HttpErrors.Unauthorized(invalidCredentialsError);
@@ -62,9 +62,9 @@ export class MyUserService implements UserService<User, Credentials> {
         ? `${userName} ${user.lastName}`
         : `${user.lastName}`;
     const userProfile = {
-      [securityId]: user.id,
+      [securityId]: user.email,
       name: userName,
-      id: user.id,
+      id: user.email,
       roles: user.roles,
     };
 

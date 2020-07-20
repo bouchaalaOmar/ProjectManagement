@@ -32,8 +32,7 @@
               "node_modules/admin-lte/plugins/fontawesome-free/css/all.min.css",
               "node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
               "node_modules/admin-lte/docs_html/assets/css/adminlte.css",
-              "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css",
-              "node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css"
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css"
             ],
             "scripts": [
               "node_modules/admin-lte/plugins/jquery/jquery.js",
@@ -44,11 +43,7 @@
               "node_modules/admin-lte/plugins/jquery-mousewheel/jquery.mousewheel.js",
               "node_modules/admin-lte/plugins/raphael/raphael.js",
               "node_modules/admin-lte/plugins/jquery-mapael/jquery.mapael.js",
-              "node_modules/datatables.net/js/jquery.dataTables.js",
-              "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js",
-              "node_modules/datatables.net-select/js/dataTables.select.min.js",
-              "node_modules/datatables.net-select-bs4/js/select.bootstrap4.min.js"
-
+              "node_modules/datatables.net/js/jquery.dataTables.js"
             ]
           },
           "configurations": {

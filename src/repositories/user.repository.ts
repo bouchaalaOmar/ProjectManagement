@@ -6,7 +6,6 @@
 import {Getter, inject} from '@loopback/core';
 import {
   DefaultCrudRepository,
-  HasManyRepositoryFactory,
   HasOneRepositoryFactory,
   juggler,
   repository,
@@ -21,11 +20,11 @@ export type Credentials = {
 
 export class UserRepository extends DefaultCrudRepository<
   User,
-  typeof User.prototype.id
+  typeof User.prototype.email
 > {
   public readonly userCredentials: HasOneRepositoryFactory<
     UserCredentials,
-    typeof User.prototype.id
+    typeof User.prototype.email
   >;
 
   constructor(
@@ -43,7 +42,7 @@ export class UserRepository extends DefaultCrudRepository<
   }
 
   async findCredentials(
-    userId: typeof User.prototype.id,
+    userId: typeof User.prototype.email,
   ): Promise<UserCredentials | undefined> {
     try {
       return await this.userCredentials(userId).get();

@@ -3,7 +3,7 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-// TODO(jannyHou): This should be moved to @loopback/authentication
+// TODO(: This should be moved to @loopback/authentication
 export const UserProfileSchema = {
   type: 'object',
   required: ['id'],
@@ -14,7 +14,7 @@ export const UserProfileSchema = {
   },
 };
 
-// TODO(jannyHou): This is a workaround to manually
+// TODO: This is a workaround to manually
 // describe the request body of 'Users/login'.
 // We should either create a Credential model, or
 // infer the spec from User model

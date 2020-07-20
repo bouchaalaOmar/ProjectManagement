@@ -1,0 +1,179 @@
+<div class="wrapper">
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Ajouter Utilisateur</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Données Personnelles</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="card-body" style="display: block;">
+                <div class="form-group">
+                  <label for="email">Utilisateur</label>
+                  <input type="text" id="email" class="form-control" formControlName="email" name="email"
+                         [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Utilisateur est obligatoire</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="firstName">Nom</label>
+                  <input type="text" id="firstName" class="form-control" formControlName="firstName" name="firstName"
+                         [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                  <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">Prénom est obligatoire</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Prénom</label>
+                  <input type="text" id="lastName" class="form-control" formControlName="lastName" name="lastName"
+                         [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                  <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required">Nom est obligatoire</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="cin">CIN</label>
+                  <input type="text" id="cin" class="form-control" formControlName="cin" name="cin"
+                         [ngClass]="{ 'is-invalid': submitted && f.cin.errors }">
+                  <div *ngIf="submitted && f.cin.errors" class="invalid-feedback">
+                    <div *ngIf="f.cin.errors.required">CIN est obligatoire</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="gender">Gender</label>
+                  <input type="text" id="gender" class="form-control" formControlName="gender" name="gender"
+                         [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                  <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                    <div *ngIf="f.gender.errors.required">Sexe est obligatoire</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="address">Adresse</label>
+                  <textarea id="address" class="form-control" rows="4" formControlName="address" name="address"
+                            [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
+                  </textarea>
+                  <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                    <div *ngIf="f.address.errors.required">Adresse est obligatoire</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Tel</label>
+                  <input type="text" id="phone" class="form-control" formControlName="phone" name="phone"
+                         [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                  <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                    <div *ngIf="f.phone.errors.required">Téléphone est obligatoire</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Date de naissance:</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                    <input id="dateOfBirth" type="text" class="form-control" data-inputmask-alias="datetime"
+                           data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false"
+                           formControlName="dateOfBirth" name="dateOfBirth"
+                           [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }">
+                    <div *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback">
+                      <div *ngIf="f.dateOfBirth.errors.required">Date de naissance est obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPlaceOfBirth">Lieu de naissance</label>
+                  <input id="placeOfBirth" type="text" id="inputPlaceOfBirth" class="form-control"
+                         formControlName="placeOfBirth" name="placeOfBirth"
+                         [ngClass]="{ 'is-invalid': submitted && f.placeOfBirth.errors }">
+                  <div *ngIf="submitted && f.placeOfBirth.errors" class="invalid-feedback">
+                    <div *ngIf="f.placeOfBirth.errors.required">Lieu de naissance est obligatoire</div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <div class="col-md-6">
+            <div class="card card-secondary">
+              <div class="card-header">
+                <h3 class="card-title">Données Professionnelles</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="card-body" style="display: block;">
+                <div class="form-group">
+                  <label for="inputRegistrationNumber">Matricule Fiscal</label>
+                  <input id="registrationNumber" type="text" id="inputRegistrationNumber" class="form-control"
+                         formControlName="registrationNumber" name="registrationNumber"
+                         [ngClass]="{ 'is-invalid': submitted && f.registrationNumber.errors }">
+                  <div *ngIf="submitted && f.registrationNumber.errors" class="invalid-feedback">
+                    <div *ngIf="f.registrationNumber.errors.required">Matricule Fiscal est obligatoire</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Date d'embauche:</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                    <input id="dateOfHire" type="text" class="form-control" data-inputmask-alias="datetime"
+                           data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false"
+                           formControlName="dateOfHire" name="dateOfHire"
+                           [ngClass]="{ 'is-invalid': submitted && f.dateOfHire.errors }">
+                    <div *ngIf="submitted && f.dateOfHire.errors" class="invalid-feedback">
+                      <div *ngIf="f.dateOfHire.errors.required">Date d'embauche est obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="roles">Rôle</label>
+                  <select id="roles" class="form-control custom-select" formControlName="roles" name="roles"
+                          [ngClass]="{ 'is-invalid': submitted && f.roles.errors }">
+                    <option selected="" disabled="">Select one</option>
+                    <option value="admin">Admin</option>
+                    <option value="pm">Chef de projet</option>
+                    <option value="emp">Employé</option>
+                  </select>
+                  <div *ngIf="submitted && f.roles.errors" class="invalid-feedback">
+                    <div *ngIf="f.roles.errors.required">Rôle est obligatoire</div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+
+        </div>
+        <div class="col-12">
+          <a href="#" class="btn btn-secondary" routerLink="/list-user">Cancel</a>
+          <input type="submit" value="Ajouter User" class="btn btn-success float-right">
+        </div>
+      </form>
+    </section>
+    <!-- /.content -->
+  </div>
+</div>

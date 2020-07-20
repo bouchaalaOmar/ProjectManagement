@@ -1,60 +1,112 @@
-// Copyright IBM Corp. 2019,2020. All Rights Reserved.
-// Node module: loopback4-example-shopping
-// This file is licensed under the MIT License.
-// License text available at https://opensource.org/licenses/MIT
-
 import {Entity, model, property, hasMany, hasOne} from '@loopback/repository';
 import {UserCredentials} from './user-credentials.model';
+import {Project} from "./project.model";
+import {Task} from "./task.model";
 
-@model({
-  settings: {
-    indexes: {
-      uniqueEmail: {
-        keys: {
-          email: 1,
-        },
-        options: {
-          unique: true,
-        },
-      },
-    },
-  },
-})
+@model()
 export class User extends Entity {
-  @property({
-    type: 'string',
-    id: true,
-  })
-  id: string;
 
-  @property({
-    type: 'string',
-    required: true,
-  })
-  email: string;
+    @property({
+        type: 'number',
+        generated: true,
+        id: true,
+    })
+    id?: number;
 
-  @property({
-    type: 'string',
-  })
-  firstName?: string;
+    @property({
+        type: 'string',
+        required: true,
+        index: {
+            unique: true
+        }
+    })
+    email: string;
 
-  @property({
-    type: 'string',
-  })
-  lastName?: string;
+    @property({
+        type: 'string',
+        required: true,
+        index: {
+            unique: true
+        }
+    })
+    registrationNumber: string;
+
+    @property({
+        type: 'string',
+        required: true,
+        index: {
+            unique: true
+        }
+    })
+    cin: string;
+
+    @property({
+        type: 'string',
+    })
+    firstName?: string;
+
+    @property({
+        type: 'string',
+    })
+    lastName?: string;
+
+    @property({
+        type: 'string',
+        required: true,
+    })
+    gender: string;
+
+    @property({
+        type: 'string',
+        required: true,
+        index: {
+            unique: true
+        }
+    })
+    phone: string;
+
+    @property({
+        type: 'string',
+        required: true,
+    })
+    address: string;
+
+    @property({
+        type: 'string',
+        required: true,
+    })
+    dateOfBirth: string;
+
+    @property({
+        type: 'string',
+        required: true,
+    })
+    dateOfHire: string;
+
+    @property({
+        type: 'string',
+        required: true,
+    })
+    placeOfBirth: string;
 
 
-  @hasOne(() => UserCredentials)
-  userCredentials: UserCredentials;
+    @hasOne(() => UserCredentials)
+    userCredentials: UserCredentials;
+
+    @hasMany(() => Project, {keyTo: 'projectManagerId'})
+    projects: Project[];
+
+    @hasMany(() => Task, {keyTo: 'employeeId'})
+    tasks: Task[];
 
 
-  @property({
-    type: 'array',
-    itemType: 'string',
-  })
-  roles?: string[];
+    @property({
+        type: 'array',
+        itemType: 'string',
+    })
+    roles?: string[];
 
-  constructor(data?: Partial<User>) {
-    super(data);
-  }
+    constructor(data?: Partial<User>) {
+        super(data);
+    }
 }

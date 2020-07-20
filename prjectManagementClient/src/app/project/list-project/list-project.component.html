@@ -1,0 +1,72 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Gestion des Projets</h1>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Info boxes -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="col-sm-2">
+                <button type="button" class="btn alert-info" (click)="addProject()">
+                  <i class="fa fa-plus"> Nouvel Projet</i>
+                </button>
+              </div><!-- /.col -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table datatable [dtOptions]="dtProjectOptions" [dtTrigger]="dtProjectTrigger" class="row-border hover">
+                <thead>
+                <tr>
+                  <th>Nom de projet</th>
+                  <th>Date de commencement</th>
+                  <th>Chargé</th>
+                  <th>Client</th>
+                  <th style="width: 10%;">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let project of projects; let i = index" role="row" class="odd">
+                  <td>{{project.name}}</td>
+                  <td>{{project.startDate}}</td>
+                  <td>{{project.manager.email}}</td>
+                  <td>{{project.customer.name}}</td>
+                  <td>
+                    <div class="btn btn-info btn-secondary" style="margin-right: 1px;" (click)="editProject(project)">
+                      <i class="fas fa-pencil-alt">
+                      </i>
+                    </div>
+                    <div class="btn btn-danger btn-secondary" (click)="deleteProject(project)">
+                      <i class="fas fa-trash">
+                      </i>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div><!--/. container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

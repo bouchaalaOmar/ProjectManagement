@@ -1,0 +1,82 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Gestion des utilisateurs</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Info boxes -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="col-sm-2">
+                <button type="button" class="btn alert-info" (click)="addUser()">
+                  <i class="fa fa-plus"> Nouvel Utilisateur</i>
+                </button>
+              </div><!-- /.col -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table datatable [dtOptions]="dtUserOptions" [dtTrigger]="dtUserTrigger" class="row-border hover">
+                <thead>
+                <tr>
+                  <th>Utilisateur</th>
+                  <th>Nom/Prenom</th>
+                  <th>Reg Num</th>
+                  <th>Tél</th>
+                  <th>Sexe</th>
+                  <th>Date Embauche</th>
+                  <th>Adresse</th>
+                  <th>Rôles</th>
+                  <th style="width: 10%;">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of users; let i = index" role="row" class="odd">
+                  <td>{{user.email}}</td>
+                  <td>{{user.firstName}} {{user.lastName}}</td>
+                  <td>{{user.registrationNumber}}</td>
+                  <td>{{user.phone}}</td>
+                  <td style="width: 2%">{{user.gender}}</td>
+                  <td>{{user.dateOfHire}}</td>
+                  <td style="width: 10%">{{user.address}}</td>
+                  <td>{{user.roles}}</td>
+                  <td>
+                    <div class="btn btn-info btn-secondary" style="margin-right: 1px;" (click)="editUser(user)">
+                      <i class="fas fa-pencil-alt">
+                      </i>
+                    </div>
+                    <div class="btn btn-danger btn-secondary" (click)="deleteUser(user)">
+                      <i class="fas fa-trash">
+                      </i>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div><!--/. container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

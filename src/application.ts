@@ -1,28 +1,31 @@
-import {BootMixin} from '@loopback/boot';
+import {AuthenticationComponent} from '@loopback/authentication';
+import {AuthorizationComponent} from '@loopback/authorization';import {BootMixin} from '@loopback/boot';
 import {ApplicationConfig, BindingKey, createBindingFromClass,} from '@loopback/core';
 import {RestExplorerBindings, RestExplorerComponent,} from '@loopback/rest-explorer';
 import {RepositoryMixin, model, property} from '@loopback/repository';
 import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
-import {MySequence} from './sequence';
 
 // ---------- Authentication imports-------------
+import {JWTAuthenticationStrategy} from "./authentication-strategies/jwt-strategy";
+
 import {
     PasswordHasherBindings,
     TokenServiceBindings,
     TokenServiceConstants,
     UserServiceBindings,
 } from './keys';
-import {AuthenticationComponent} from '@loopback/authentication';
-import {AuthorizationComponent} from '@loopback/authorization';
-import {JWTAuthenticationStrategy} from './authentication-strategies/jwt-strategy';
-import {BcryptHasher} from './services/hash.password.bcryptjs';
-import {JWTService} from './services/jwt-service';
+
+
 // ---------- end Authentication imports-------------
 
 import {User} from './models';
+import {MySequence} from "./sequence";
+import {BcryptHasher} from "./services/hash.password.bcryptjs";
+import {JWTService} from "./services/jwt-service";
 import {MyUserService} from './services/user-service';
+
 
 
 export {ApplicationConfig};
