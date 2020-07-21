@@ -1,0 +1,54 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Mes Projets</h1>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Info boxes -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table datatable [dtOptions]="dtPmProjectOptions" [dtTrigger]="dtPmProjectTrigger" class="row-border hover">
+                <thead>
+                <tr>
+                  <th>Nom de projet</th>
+                  <th>Date de commencement</th>
+                  <th>Chargé</th>
+                  <th>Client</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let project of projects; let i = index" role="row" class="odd">
+                  <td>{{project.name}}</td>
+                  <td>{{project.startDate}}</td>
+                  <td>{{project.manager.email}}</td>
+                  <td>{{project.customer.name}}</td>
+                </tr>
+                </tbody>
+              </table>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div><!--/. container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

@@ -23,6 +23,10 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(!window.localStorage.getItem('currentUser')) {
+      this.router.navigate(['login']);
+      return;
+    }
     let userId = window.localStorage.getItem("editUserId");
     if (!userId) {
       alert("Invalid action.")

@@ -38,4 +38,7 @@ export class ProjectService {
   deleteProject(id: number): Observable<Project> {
     return this.http.delete<Project>(`${environment.apiUrl}/projects/${id}`);
   }
+  getProjectsByProjectManager(projectManagerId): Observable<Project[]> {
+    return this.http.get<Project[]>(`${environment.apiUrl}/projects/pm/${projectManagerId}`);
+  }
 }

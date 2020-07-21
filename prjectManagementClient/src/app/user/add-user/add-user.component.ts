@@ -18,6 +18,10 @@ export class AddUserComponent implements OnInit {
   roles: any;
 
   ngOnInit() {
+    if(!window.localStorage.getItem('currentUser')) {
+      this.router.navigate(['login']);
+      return;
+    }
     this.roles = [];
     this.addForm = this.formBuilder.group({
       email: ['', Validators.required],

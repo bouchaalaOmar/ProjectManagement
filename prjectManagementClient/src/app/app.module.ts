@@ -15,6 +15,7 @@ import {ListUserComponent} from "./user/list-user/list-user.component";
 import {AddProjectComponent} from "./project/add-project/add-project.component";
 import {EditProjectComponent} from "./project/edit-project/edit-project.component";
 import {ListProjectComponent} from "./project/list-project/list-project.component";
+import {PmProjectComponent} from "./project/pm-project/pm-project.component";
 
 import {AddCustomerComponent} from "./customer/add-customer/add-customer.component";
 import {EditCustomerComponent} from "./customer/edit-customer/edit-customer.component";
@@ -37,6 +38,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
     AddProjectComponent,
     EditProjectComponent,
     ListProjectComponent,
+    PmProjectComponent,
     AddCustomerComponent,
     EditCustomerComponent,
     ListCustomerComponent

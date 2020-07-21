@@ -23,6 +23,10 @@ export class EditCustomerComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(!window.localStorage.getItem('currentUser')) {
+      this.router.navigate(['login']);
+      return;
+    }
     let customerId = window.localStorage.getItem("editCustomerId");
     if (!customerId) {
       this.router.navigate(['list-customer']);

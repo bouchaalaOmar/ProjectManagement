@@ -29,6 +29,10 @@ export class EditProjectComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(!window.localStorage.getItem('currentUser')) {
+      this.router.navigate(['login']);
+      return;
+    }
     let projectId = window.localStorage.getItem("editProjectId");
     if (!projectId) {
       this.router.navigate(['list-project']);

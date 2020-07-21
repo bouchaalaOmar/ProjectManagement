@@ -13,6 +13,7 @@ import {ListProjectComponent} from "./project/list-project/list-project.componen
 import {AddCustomerComponent} from "./customer";
 import {EditCustomerComponent} from "./customer/edit-customer/edit-customer.component";
 import {ListCustomerComponent} from "./customer/list-customer/list-customer.component";
+import {PmProjectComponent} from "./project/pm-project/pm-project.component";
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'add-project', component: AddProjectComponent },
   { path: 'edit-project', component: EditProjectComponent },
   { path: 'list-project', component: ListProjectComponent },
+  { path: 'pm-project', component: PmProjectComponent },
   { path: 'add-customer', component: AddCustomerComponent },
   { path: 'edit-customer', component: EditCustomerComponent },
   { path: 'list-customer', component: ListCustomerComponent },
