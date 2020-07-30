@@ -1,0 +1,77 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-3">
+          <h1 class="m-0 text-dark">Mes tâches</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-3">
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Info boxes -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table datatable [dtOptions]="dtMakeTaskOptions" [dtTrigger]="dtMakeTaskTrigger" class="row-border hover">
+                <thead>
+                <tr>
+                  <th>Numéro</th>
+                  <th>Project</th>
+                  <th>Nombre Logement</th>
+                  <th>Date de traitement</th>
+                  <th>Site</th>
+                  <th>Site sadirah</th>
+                  <th>Chargé</th>
+                  <th>Etat</th>
+                  <th>Derniére modif</th>
+                  <th>Commentaire</th>
+                  <th style="width: 60%">Date de validation</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let task of tasks; let i = index" role="row" class="odd">
+                  <td><div style="cursor: pointer;color: blue;" (click)="goToTasksdDetails(task)"> {{task.id}}</div></td>
+                  <td>{{task.project.name}}</td>
+                  <td>{{task.numberLogement}}</td>
+                  <td>{{task.treatmentDate}}</td>
+                  <td>{{task.siteName}}</td>
+                  <td>{{task.sadirahStatus}}</td>
+                  <td>{{task.employee.firstName}} {{task.employee.lastName}}</td>
+                  <td>
+                    <span class="badge badge-secondary" *ngIf="task.taskStatus == 'en attente'">{{task.taskStatus}}</span>
+                    <span class="badge badge-primary" *ngIf="task.taskStatus == 'en cours'">{{task.taskStatus}}</span>
+                    <span class="badge badge-danger" *ngIf="task.taskStatus == 'bloqué'">{{task.taskStatus}}</span>
+                    <span class="badge badge-info" *ngIf="task.taskStatus == 'livré'">{{task.taskStatus}}</span>
+                    <span class="badge badge-success" *ngIf="task.taskStatus == 'validé'">{{task.taskStatus}}</span>
+
+                  </td>
+                  <td>{{task.lastModifiedDate}}</td>
+                  <td>{{task.comment}}</td>
+                  <td>{{task.validationDate}}</td>
+                </tr>
+                </tbody>
+              </table>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div><!--/. container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

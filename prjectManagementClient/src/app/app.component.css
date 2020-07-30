@@ -1,0 +1,14 @@
+.dropdown-menu{
+  left: -108px;
+}
+#menu-outer
+{
+  width:100%;
+  text-align: center;
+}
+.menu-inner
+{
+  display: inline-block;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}

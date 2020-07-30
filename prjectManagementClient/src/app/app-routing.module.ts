@@ -14,6 +14,10 @@ import {AddCustomerComponent} from "./customer";
 import {EditCustomerComponent} from "./customer/edit-customer/edit-customer.component";
 import {ListCustomerComponent} from "./customer/list-customer/list-customer.component";
 import {PmProjectComponent} from "./project/pm-project/pm-project.component";
+import {AddTaskComponent} from "./task/add-task/add-task.component";
+import {ListTaskComponent} from "./task/list-task/list-task.component";
+import {EditTaskComponent} from "./task/edit-task/edit-task.component";
+import {MakeTaskComponent} from "./task/make-task/make-task.component";
 
 
 const routes: Routes = [
@@ -29,6 +33,10 @@ const routes: Routes = [
   { path: 'add-customer', component: AddCustomerComponent },
   { path: 'edit-customer', component: EditCustomerComponent },
   { path: 'list-customer', component: ListCustomerComponent },
+  { path: 'add-task', component: AddTaskComponent },
+  { path: 'edit-task', component: EditTaskComponent },
+  { path: 'list-task', component: ListTaskComponent },
+  { path: 'make-task', component: MakeTaskComponent },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];

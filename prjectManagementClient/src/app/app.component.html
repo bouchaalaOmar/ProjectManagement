@@ -32,7 +32,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a routerLink="/emp-project" class="nav-link">Projets</a>
+          <a routerLink="/make-task" class="nav-link">Mes tâches</a>
         </li>
       </ul>
 
@@ -51,15 +51,15 @@
 
               <p>
                 {{currentUser.info.firstName}} {{currentUser.info.lastName}}
-                <small>Member since {{currentUser.info.dateOfHire}}</small>
+                <small>Membre depuis {{currentUser.info.dateOfHire}}</small>
               </p>
             </li>
             <!-- Menu Footer-->
-            <li class="user-footer">
-              <div class="pull-left">
+            <li id="menu-outer">
+              <div class="menu-inner">
                 <a href="#" class="btn btn-default btn-flat">Profile</a>
               </div>
-              <div class="pull-right" (click)="logout()">
+              <div class="menu-inner" (click)="logout()">
                 <a href="#" class="btn btn-default btn-flat">Se déconnecter</a>
               </div>
             </li>
@@ -140,10 +140,10 @@
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <a routerLink="/emp-project" class="nav-link">
-                <i class="nav-icon far fa-user"></i>
+              <a routerLink="/make-task" class="nav-link">
+                <i class="nav-icon fa fa-tasks"></i>
                 <p>
-                  Projets
+                  Mes tâches
                 </p>
               </a>
             </li>

@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {CustomerService} from "../services/customer.service";
 @Component({
-  selector: 'app-add-user',
+  selector: 'app-add-customer',
   templateUrl: './add-customer.component.html'
 })
 export class AddCustomerComponent implements OnInit {

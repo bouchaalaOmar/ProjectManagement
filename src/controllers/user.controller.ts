@@ -171,11 +171,12 @@ export class UserController {
             },
         },
     })
-    @authenticate('jwt')
-    @authorize({
-        allowedRoles: ['admin'],
-        voters: [basicAuthorization],
-    })
+    //todo uncommnet this line
+    // @authenticate('jwt')
+    // @authorize({
+    //     allowedRoles: ['admin', 'pm'],
+    //     voters: [basicAuthorization],
+    // })
     async find(): Promise<User[]> {
         return this.userRepository.find();
     }
@@ -197,7 +198,7 @@ export class UserController {
   })
   @authenticate('jwt')
   @authorize({
-    allowedRoles: ['admin', 'support', 'customer'],
+    allowedRoles: ['admin', 'pm', 'emp'],
     voters: [basicAuthorization],
   })
   async findById(@param.path.string('userId') userId: string): Promise<User> {

@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import { AuthenticationService } from './_services';
-import { User, Role } from './_models';
+import { Role } from './_models';
 import {Router} from "@angular/router";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit{
   title = 'prjectManagementClient';
@@ -40,6 +40,10 @@ export class AppComponent  implements OnInit{
       this.router.navigate(['/list-user']);
     }else if(this.isProjectManager){
       this.router.navigate(['/pm-project']);
+    }else if(this.isEmployee){
+      this.router.navigate(['/make-task']);
     }
+
+
   }
 }

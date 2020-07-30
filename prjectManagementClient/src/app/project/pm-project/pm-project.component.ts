@@ -23,7 +23,7 @@ export class PmProjectComponent implements OnInit {
   dtPmProjectOptions: DataTables.Settings = {};
   dtPmProjectTrigger: Subject<any> = new Subject();
 
-  constructor(private router: Router, private projectService: ProjectService) {
+  constructor(private router: Router,  private projectService: ProjectService) {
   }
 
   ngOnInit() {
@@ -46,6 +46,12 @@ export class PmProjectComponent implements OnInit {
         this.loading = false;
         alert(error);
       });
+  }
+
+  goToTasksList(project){
+    window.localStorage.removeItem("selectedProjectId");
+    window.localStorage.setItem("selectedProjectId", JSON.stringify(project));
+    this.router.navigate(['list-task']);
   }
 
 }

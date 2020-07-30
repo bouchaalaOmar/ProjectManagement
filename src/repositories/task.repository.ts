@@ -17,16 +17,16 @@ export class TaskRepository extends DefaultCrudRepository<Task,
         @inject('datasources.projectManagementDataSource') dataSource: ProjectManagementDataSourceDataSource,
         @repository.getter('UserRepository')
         protected employeeRepositoryGetter: Getter<UserRepository>,
-        @repository.getter('UserRepository')
+        @repository.getter('ProjectRepository')
         protected projectRepositoryGetter: Getter<ProjectRepository>,
     ) {
         super(Task, dataSource);
         this.employee = this.createBelongsToAccessorFor(
-            'user',
+            'employee',
             employeeRepositoryGetter,
         );
 
-        this.registerInclusionResolver('user', this.employee.inclusionResolver);
+        this.registerInclusionResolver('employee', this.employee.inclusionResolver);
 
         this.project = this.createBelongsToAccessorFor(
             'project',

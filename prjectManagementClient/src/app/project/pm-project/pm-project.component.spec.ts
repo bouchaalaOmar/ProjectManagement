@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PmProjectComponent } from './pm-project.component';
 
-describe('ListCustomerComponent', () => {
+describe('MakeTaskComponent', () => {
   let component: PmProjectComponent;
   let fixture: ComponentFixture<PmProjectComponent>;
 

@@ -26,15 +26,13 @@
                 <tr>
                   <th>Nom de projet</th>
                   <th>Date de commencement</th>
-                  <th>Chargé</th>
                   <th>Client</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let project of projects; let i = index" role="row" class="odd">
-                  <td>{{project.name}}</td>
+                  <td><div style="cursor: pointer;color: blue;" (click)="goToTasksList(project)"> {{project.name}} </div></td>
                   <td>{{project.startDate}}</td>
-                  <td>{{project.manager.email}}</td>
                   <td>{{project.customer.name}}</td>
                 </tr>
                 </tbody>

@@ -47,6 +47,8 @@ export class EditProjectComponent implements OnInit {
       projectManagerId: ['', Validators.required]
     });
     this.loading = true;
+
+    //TODO RETURNS only USERS WITH ROLE PM
     this.userService.getUsers()
       .subscribe( data => {
         this.users =  data;

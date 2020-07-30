@@ -23,6 +23,9 @@ import {ListCustomerComponent} from "./customer/list-customer/list-customer.comp
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AddTaskComponent, EditTaskComponent, ListTaskComponent} from "./task";
+import {DatePipe} from "@angular/common";
+import {MakeTaskComponent} from "./task/make-task/make-task.component";
 
 // used to create fake backend
 // import { fakeBackendProvider } from './_helpers';
@@ -41,7 +44,11 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
     PmProjectComponent,
     AddCustomerComponent,
     EditCustomerComponent,
-    ListCustomerComponent
+    ListCustomerComponent,
+    AddTaskComponent,
+    EditTaskComponent,
+    ListTaskComponent,
+    MakeTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +60,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    DatePipe
 
     // provider used to create fake backend
     //fakeBackendProvider

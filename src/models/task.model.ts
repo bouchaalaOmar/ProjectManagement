@@ -1,7 +1,6 @@
 import {belongsTo, Entity, model, property} from '@loopback/repository';
 import {User} from "./user.model";
 import {Project, ProjectWithRelations} from "./project.model";
-import {UserWithRelations} from "@loopback/authentication-jwt";
 
 @model()
 export class Task extends Entity {
@@ -32,20 +31,40 @@ export class Task extends Entity {
 
     @property({
         type: 'string',
-        required: true,
+        required: false,
+        nullable: true
     })
     sadirahStatus: string;
 
     @property({
         type: 'string',
-        required: true,
+        required: false,
+        nullable: true
     })
     taskStatus: string;
+    @property({
+        type: 'string',
+        required: false,
+        nullable: true
+    })
+    lastModifiedDate: string;
+    @property({
+        type: 'string',
+        required: false,
+        nullable: true
+    })
+    comment: string;
+    @property({
+        type: 'string',
+        required: false,
+        nullable: true
+    })
+    validationDate: string;
 
     @belongsTo(() => Project, {name: 'project'})
     projectId: number;
 
-    @belongsTo(() => User, {name: 'user'})
+    @belongsTo(() => User, {name: 'employee'})
     employeeId: number;
 
     constructor(data?: Partial<Task>) {
