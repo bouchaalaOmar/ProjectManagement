@@ -19,7 +19,7 @@ export class UserService {
 
 
   getUsers() : Observable<User[]> {
-    return this.http.get<User[]>(`${environment.apiUrl}/users`);
+    return this.http.get<User[]>(`${environment.apiUrl}/users?filter[where][roles][neq]=["admin"]`);
   }
 
   getUserById(id: number): Observable<User> {

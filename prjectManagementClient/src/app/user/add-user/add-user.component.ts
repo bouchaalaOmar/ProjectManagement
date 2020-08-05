@@ -57,6 +57,7 @@ export class AddUserComponent implements OnInit {
         this.router.navigate(['list-user']);
       },
         error => {
+          this.roles = [];
           this.error = error;
           this.loading = false;
           alert(error);

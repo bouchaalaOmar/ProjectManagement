@@ -3,7 +3,7 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import {repository, model, property} from '@loopback/repository';
+import {repository, model, property, Filter} from '@loopback/repository';
 import {validateCredentials} from '../services/validator';
 import {
   post,
@@ -14,7 +14,7 @@ import {
   HttpErrors,
   getModelSchemaRef,
 } from '@loopback/rest';
-import {User} from '../models';
+import {Task, User} from '../models';
 import {UserRepository} from '../repositories';
 import {inject} from '@loopback/core';
 import {
@@ -177,10 +177,11 @@ export class UserController {
     //     allowedRoles: ['admin', 'pm'],
     //     voters: [basicAuthorization],
     // })
-    async find(): Promise<User[]> {
-        return this.userRepository.find();
+    async find(
+        @param.filter(Task) filter?: Filter<Task>,
+    ): Promise<User[]> {
+        return this.userRepository.find(filter);
     }
-
   @get('/users/{userId}', {
     security: OPERATION_SECURITY_SPECIFICATION,
     responses: {
