@@ -21,7 +21,7 @@
                 <h3 class="card-title"></h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-                          title="Collapse">
+                    title="Collapse">
                     <i class="fas fa-minus"></i></button>
                 </div>
               </div>
@@ -29,11 +29,11 @@
                 <div class="hidden">
                   <input type="hidden" formControlName="id" placeholder="id" name="id" class="form-control" id="id">
                 </div>
-                <div class="form-group" >
+                <div class="form-group">
                   <label for="numberLogement">Nombre de logement</label>
                   <input type="number" id="numberLogement" class="form-control" formControlName="numberLogement"
-                         name="numberLogement"
-                         [ngClass]="{'is-invalid': submitted && f.numberLogement.errors}" [attr.disabled]="isEmp?'':null">
+                    name="numberLogement" [ngClass]="{'is-invalid': submitted && f.numberLogement.errors}"
+                    [attr.disabled]="isEmp?'':null">
                   <div *ngIf="submitted && f.numberLogement.errors" class="invalid-feedback">
                     <div *ngIf="f.numberLogement.errors.required">Nombre de logement est obligatoire</div>
                   </div>
@@ -46,9 +46,9 @@
                       <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
                     <input id="treatmentDate" type="text" class="form-control" data-inputmask-alias="datetime"
-                           data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false"
-                           formControlName="treatmentDate" name="treatmentDate"
-                           [ngClass]="{ 'is-invalid': submitted && f.treatmentDate.errors }" [attr.disabled]="isEmp?'':null">
+                      data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false"
+                      formControlName="treatmentDate" name="treatmentDate"
+                      [ngClass]="{ 'is-invalid': submitted && f.treatmentDate.errors }" [attr.disabled]="isEmp?'':null">
                     <div *ngIf="submitted && f.treatmentDate.errors" class="invalid-feedback">
                       <div *ngIf="f.treatmentDate.errors.required">Date de traitement est obligatoire</div>
                     </div>
@@ -58,7 +58,7 @@
                 <div class="form-group">
                   <label for="siteName">Nom du site</label>
                   <input type="text" id="siteName" class="form-control" formControlName="siteName" name="siteName"
-                         [ngClass]="{ 'is-invalid': submitted && f.siteName.errors }"  [attr.disabled]="isEmp?'':null">
+                    [ngClass]="{ 'is-invalid': submitted && f.siteName.errors }" [attr.disabled]="isEmp?'':null">
                   <div *ngIf="submitted && f.siteName.errors" class="invalid-feedback">
                     <div *ngIf="f.siteName.errors.required">Nom du site est obligatoire</div>
                   </div>
@@ -67,8 +67,7 @@
                 <div class="form-group" [hidden]="isEmp">
                   <label for="employeeId">Employé</label>
                   <select id="employeeId" class="form-control custom-select" formControlName="employeeId"
-                          name="employeeId"
-                          [ngClass]="{ 'is-invalid': submitted && f.employeeId.errors }">
+                    name="employeeId" [ngClass]="{ 'is-invalid': submitted && f.employeeId.errors }">
                     <option selected="" disabled="">Select one</option>
                     <option *ngFor="let emp of employees; let i = index" [ngValue]="emp.id">
                       {{emp.firstName}}{{emp.lastName}}
@@ -80,7 +79,7 @@
                 <div class="form-group">
                   <label for="sadirahStatus">Etat sur sadirah</label>
                   <select id="sadirahStatus" class="form-control custom-select" formControlName="sadirahStatus"
-                          name="sadirahStatus" [attr.disabled]="isEmp?null:''">
+                    name="sadirahStatus" [attr.disabled]="isEmp?null:''">
                     <option selected="" disabled="">Select one</option>
                     <option selected="sadirahStatus">Vertical en validation ingénierie</option>
                     <option selected="sadirahStatus">Vertical controle gomaj</option>
@@ -88,28 +87,29 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="taskStatus">Etat sur sadirah</label>
+                  <label for="taskStatus">Etat</label>
                   <select id="taskStatus" class="form-control custom-select" formControlName="taskStatus"
-                          name="taskStatus" (change)="onChangeTaskStatus()" [attr.disabled]="isEmp?null:''">
+                    name="taskStatus" (change)="onChangeTaskStatus()" [attr.disabled]="isEmp?null:''">
                     <option selected="" disabled="">Select one</option>
-                    <option selected="taskStatus" >en attente</option>
-                    <option selected="taskStatus" >en cours</option>
-                    <option selected="taskStatus" >livré</option>
-                    <option selected="taskStatus" >bloqué</option>
-                    <option [hidden]="true"  selected="taskStatus" >validé</option>
+                    <option selected="taskStatus">en attente</option>
+                    <option selected="taskStatus">en cours</option>
+                    <option selected="taskStatus">livré</option>
+                    <option selected="taskStatus">bloqué</option>
+                    <option [hidden]="true" selected="taskStatus">validé</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="comment">Comment</label>
                   <textarea id="comment" class="form-control" rows="4" formControlName="comment" name="comment"
-                            [attr.disabled]="isEmp?null:''">
+                    [attr.disabled]="isEmp?null:''">
                   </textarea>
                 </div>
               </div>
               <!-- /.card -->
               <div class="card-footer">
                 <a href="#" class="btn btn-secondary" routerLink="/make-task">Cancel</a>
-                <input [attr.disabled]="editForm.value.taskStatus == 'validé'?'':null" type="submit" value="Modifier" class="btn btn-success float-right">
+                <input [attr.disabled]="editForm.value.taskStatus == 'validé'?'':null" type="submit" value="Modifier"
+                  class="btn btn-success float-right">
               </div>
             </div>
           </div>
@@ -119,4 +119,3 @@
     <!-- /.content -->
   </div>
 </div>
-

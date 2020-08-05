@@ -1,127 +1,123 @@
+<div class="wrapper">
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Modifier Projet</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
 
-
-    <div class="wrapper">
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1>Modifier Projet</h1>
+    <!-- Main content -->
+    <section class="content">
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title"></h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                    title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                </div>
               </div>
-            </div>
-          </div><!-- /.container-fluid -->
-        </section>
+              <div class="card-body">
 
-        <!-- Main content -->
-        <section class="content">
-          <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="card card-primary">
-                  <div class="card-header">
-                    <h3 class="card-title"></h3>
-                    <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-                              title="Collapse">
-                        <i class="fas fa-minus"></i></button>
-                    </div>
+                <div class="hidden">
+                  <input type="hidden" formControlName="id" placeholder="id" name="id" class="form-control" id="id">
+                </div>
+                <div class="form-group">
+                  <label for="name">Nom du projet</label>
+                  <input type="text" id="name" class="form-control" formControlName="name" name="name"
+                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Nom du projet est obligatoire</div>
                   </div>
-                  <div class="card-body">
+                </div>
 
-                    <div class="hidden">
-                      <input type="hidden" formControlName="id" placeholder="id" name="id" class="form-control" id="id">
-                    </div>
-                    <div class="form-group">
-                      <label for="name">Nom du projet</label>
-                      <input type="text" id="name" class="form-control" formControlName="name" name="name"
-                             [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
-                      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                        <div *ngIf="f.name.errors.required">Nom du projet est obligatoire</div>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="description">Description</label>
-                      <textarea id="description" class="form-control" rows="4" formControlName="description"
-                                name="description"
-                                [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea id="description" class="form-control" rows="4" formControlName="description"
+                    name="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
                   </textarea>
-                      <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-                        <div *ngIf="f.description.errors.required">Description est obligatoire</div>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label>Date de commencement:</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                        </div>
-                        <input id="startDate" type="text" class="form-control" data-inputmask-alias="datetime"
-                               data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false"
-                               formControlName="startDate" name="startDate"
-                               [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }">
-                        <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
-                          <div *ngIf="f.startDate.errors.required">Date de commencement est obligatoire</div>
-                        </div>
-                      </div>
-                    </div>
-
+                  <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                    <div *ngIf="f.description.errors.required">Description est obligatoire</div>
                   </div>
-                  <!-- /.card-body -->
                 </div>
-                <!-- /.card -->
-              </div>
-              <div class="col-md-6">
-                <div class="card card-secondary">
-                  <div class="card-header">
-                    <h3 class="card-title"></h3>
-                    <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-                              title="Collapse">
-                        <i class="fas fa-minus"></i></button>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <div class="form-group">
-                      <label for="customerId">Client</label>
-                      <select id="customerId" class="form-control custom-select" formControlName="customerId" name="customerId"
-                              [ngClass]="{ 'is-invalid': submitted && f.customerId.errors }">
-                        <option selected="" disabled="">Select one</option>
-                        <option *ngFor="let customer of customers; let i = index" [ngValue]="customer.id">
-                          {{customer.name}}
-                      </select>
-                      <div *ngIf="submitted && f.customerId.errors" class="invalid-feedback">
-                        <div *ngIf="f.customerId.errors.required">Client  est obligatoire</div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="projectManagerId">Chef de projet</label>
-                      <select id="projectManagerId" class="form-control custom-select" formControlName="projectManagerId"
-                              name="projectManagerId" [ngClass]="{ 'is-invalid': submitted && f.projectManagerId.errors }">
-                        <option selected="" disabled="">Select one</option>
-                        <option *ngFor="let pm of users; let i = index" [ngValue]="pm.id">
-                          {{pm.firstName}} {{pm.lastName}}
-                        </option>
-                      </select>
-                      <div *ngIf="submitted && f.projectManagerId.errors" class="invalid-feedback">
-                        <div *ngIf="f.projectManagerId.errors.required">Chef de projet est obligatoire</div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-              </div>
 
+                <div class="form-group">
+                  <label>Date de commencement:</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                    <input id="startDate" type="text" class="form-control" data-inputmask-alias="datetime"
+                      data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false" formControlName="startDate"
+                      name="startDate" [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }">
+                    <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+                      <div *ngIf="f.startDate.errors.required">Date de commencement est obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.card-body -->
             </div>
-            <div class="col-12">
-              <a href="#" class="btn btn-secondary" routerLink="/list-project">Cancel</a>
-              <input type="submit" value="Modifier" class="btn btn-success float-right">
+            <!-- /.card -->
+          </div>
+          <div class="col-md-6">
+            <div class="card card-secondary">
+              <div class="card-header">
+                <h3 class="card-title"></h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                    title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="customerId">Client</label>
+                  <select id="customerId" class="form-control custom-select" formControlName="customerId"
+                    name="customerId" [ngClass]="{ 'is-invalid': submitted && f.customerId.errors }">
+                    <option selected="" disabled="">Select one</option>
+                    <option *ngFor="let customer of customers; let i = index" [ngValue]="customer.id">
+                      {{customer.name}}
+                  </select>
+                  <div *ngIf="submitted && f.customerId.errors" class="invalid-feedback">
+                    <div *ngIf="f.customerId.errors.required">Client est obligatoire</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="projectManagerId">Chef de projet</label>
+                  <select id="projectManagerId" class="form-control custom-select" formControlName="projectManagerId"
+                    name="projectManagerId" [ngClass]="{ 'is-invalid': submitted && f.projectManagerId.errors }">
+                    <option selected="" disabled="">Select one</option>
+                    <option *ngFor="let pm of users; let i = index" [ngValue]="pm.id">
+                      {{pm.email}}
+                    </option>
+                  </select>
+                  <div *ngIf="submitted && f.projectManagerId.errors" class="invalid-feedback">
+                    <div *ngIf="f.projectManagerId.errors.required">Chef de projet est obligatoire</div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
             </div>
-          </form>
-        </section>
-        <!-- /.content -->
-      </div>
-    </div>
+            <!-- /.card -->
+          </div>
+
+        </div>
+        <div class="col-12">
+          <a href="#" class="btn btn-secondary" routerLink="/list-project">Cancel</a>
+          <input type="submit" value="Modifier" class="btn btn-success float-right">
+        </div>
+      </form>
+    </section>
+    <!-- /.content -->
+  </div>
+</div>

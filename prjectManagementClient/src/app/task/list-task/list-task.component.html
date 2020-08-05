@@ -32,53 +32,54 @@
             <div class="card-body">
               <table datatable [dtOptions]="dtTaskOptions" [dtTrigger]="dtTaskTrigger" class="row-border hover">
                 <thead>
-                <tr>
-                  <th>Nombre Logement</th>
-                  <th>Date de traitement</th>
-                  <th>Site</th>
-                  <th>Site sadirah</th>
-                  <th>Chargé</th>
-                  <th>Etat</th>
-                  <th>Derniére modif</th>
-                  <th>Commentaire</th>
-                  <th style="width: 60%">Date de validation</th>
-                  <th style="width: 80%">Action</th>
+                  <tr>
+                    <th>Site</th>
+                    <th>Chargé</th>
+                    <th>Nombre Logement</th>
+                    <th>Date de traitement</th>
+                    <th>Site sadirah</th>
+                    <th>Etat</th>
+                    <th>Derniére modif</th>
+                    <th>Commentaire</th>
+                    <th style="width: 60%">Date de validation</th>
+                    <th style="width: 80%">Action</th>
 
-                </tr>
+                  </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let task of tasks; let i = index" role="row" class="odd">
-                  <td>{{task.numberLogement}}</td>
-                  <td>{{task.treatmentDate}}</td>
-                  <td>{{task.siteName}}</td>
-                  <td>{{task.sadirahStatus}}</td>
-                  <td>{{task.employee.firstName}} {{task.employee.lastName}}</td>
-                  <td>
-                    <span class="badge badge-secondary" *ngIf="task.taskStatus == 'en attente'">{{task.taskStatus}}</span>
-                    <span class="badge badge-primary" *ngIf="task.taskStatus == 'en cours'">{{task.taskStatus}}</span>
-                    <span class="badge badge-danger" *ngIf="task.taskStatus == 'bloqué'">{{task.taskStatus}}</span>
-                    <span class="badge badge-info" *ngIf="task.taskStatus == 'livré'">{{task.taskStatus}}</span>
-                    <span class="badge badge-success" *ngIf="task.taskStatus == 'validé'">{{task.taskStatus}}</span>
+                  <tr *ngFor="let task of tasks; let i = index" role="row" class="odd">
+                    <td>{{task.siteName}}</td>
+                    <td>{{task.employee.firstName}} {{task.employee.lastName}}</td>
+                    <td>{{task.numberLogement}}</td>
+                    <td>{{task.treatmentDate}}</td>
+                    <td>{{task.sadirahStatus}}</td>
+                    <td>
+                      <span class="badge badge-secondary"
+                        *ngIf="task.taskStatus == 'en attente'">{{task.taskStatus}}</span>
+                      <span class="badge badge-primary" *ngIf="task.taskStatus == 'en cours'">{{task.taskStatus}}</span>
+                      <span class="badge badge-danger" *ngIf="task.taskStatus == 'bloqué'">{{task.taskStatus}}</span>
+                      <span class="badge badge-info" *ngIf="task.taskStatus == 'livré'">{{task.taskStatus}}</span>
+                      <span class="badge badge-success" *ngIf="task.taskStatus == 'validé'">{{task.taskStatus}}</span>
 
-                  </td>
-                  <td>{{task.lastModifiedDate}}</td>
-                  <td>{{task.comment}}</td>
-                  <td>{{task.validationDate}}</td>
-                  <td>
-                    <div class="btn btn-info btn-secondary" style="margin-right: 2px;" (click)="editTask(task)">
-                      <i class="fas fa-pencil-alt">
-                      </i>
-                    </div>
-                    <div class="btn btn-danger btn-secondary" style="margin-right: 2px;" (click)="deleteTask(task)">
-                      <i class="fas fa-trash">
-                      </i>
-                    </div>
-                    <div class="btn btn-success btn-secondary" (click)="validateTask(task)">
-                      <i class="fas fa-check-circle">
-                      </i>
-                    </div>
-                  </td>
-                </tr>
+                    </td>
+                    <td>{{task.lastModifiedDate}}</td>
+                    <td>{{task.comment}}</td>
+                    <td>{{task.validationDate}}</td>
+                    <td>
+                      <div class="btn btn-info btn-secondary" style="margin-right: 2px;" (click)="editTask(task)">
+                        <i class="fas fa-pencil-alt">
+                        </i>
+                      </div>
+                      <div class="btn btn-danger btn-secondary" style="margin-right: 2px;" (click)="deleteTask(task)">
+                        <i class="fas fa-trash">
+                        </i>
+                      </div>
+                      <div class="btn btn-success btn-secondary" (click)="validateTask(task)">
+                        <i class="fas fa-check-circle">
+                        </i>
+                      </div>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
 
@@ -89,7 +90,8 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-    </div><!--/. container-fluid -->
+    </div>
+    <!--/. container-fluid -->
   </section>
   <!-- /.content -->
 </div>
