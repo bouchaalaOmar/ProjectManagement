@@ -51,7 +51,7 @@
                   <td>{{user.registrationNumber}}</td>
                   <td>{{user.phone}}</td>
                   <td style="width: 2%">{{user.gender}}</td>
-                  <td>{{user.dateOfHire}}</td>
+                  <td>{{user.dateOfHire | date :  "dd-MM-y"}}</td>
                   <td style="width: 10%">{{user.address}}</td>
                   <td>{{user.roles}}</td>
                   <td>

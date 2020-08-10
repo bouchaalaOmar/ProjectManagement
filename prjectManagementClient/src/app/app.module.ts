@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,10 +26,17 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AddTaskComponent, EditTaskComponent, ListTaskComponent} from "./task";
 import {DatePipe} from "@angular/common";
 import {MakeTaskComponent} from "./task/make-task/make-task.component";
+import {BsDatepickerConfig, BsDatepickerModule} from "ngx-bootstrap/datepicker";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 // used to create fake backend
 // import { fakeBackendProvider } from './_helpers';
 
+export function getDatepickerConfig(): BsDatepickerConfig {
+  return Object.assign(new BsDatepickerConfig(), {
+    dateInputFormat: 'YYYY-MM-DD'
+  });
+}
 
 @NgModule({
   declarations: [
@@ -55,11 +62,15 @@ import {MakeTaskComponent} from "./task/make-task/make-task.component";
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    DataTablesModule
+    DataTablesModule,
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: BsDatepickerConfig, useFactory: getDatepickerConfig },
     DatePipe
 
     // provider used to create fake backend

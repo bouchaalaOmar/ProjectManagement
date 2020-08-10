@@ -45,7 +45,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
-                    <input id="treatmentDate" type="text" class="form-control" data-inputmask-alias="datetime"
+                    <input id="treatmentDate" type="text" bsDatepicker class="form-control" data-inputmask-alias="datetime"
                            data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false"
                            formControlName="treatmentDate" name="treatmentDate"
                            [ngClass]="{ 'is-invalid': submitted && f.treatmentDate.errors }" [attr.disabled]="isEmp?'':null">
@@ -88,7 +88,7 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="taskStatus">Etat sur sadirah</label>
+                  <label for="taskStatus">Etat</label>
                   <select id="taskStatus" class="form-control custom-select" formControlName="taskStatus"
                           name="taskStatus" (change)="onChangeTaskStatus()" [attr.disabled]="isEmp?null:''">
                     <option selected="" disabled="">Select one</option>

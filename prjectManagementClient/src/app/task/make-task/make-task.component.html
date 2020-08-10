@@ -36,29 +36,88 @@
                   <th>Etat</th>
                   <th>Derniére modif</th>
                   <th>Commentaire</th>
-                  <th style="width: 60%">Date de validation</th>
+                  <th style="width: 40%">Date de validation</th>
+                  <th style="width: 80%">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let task of tasks; let i = index" role="row" class="odd">
-                  <td><div style="cursor: pointer;color: blue;" (click)="goToTasksdDetails(task)"> {{task.id}}</div></td>
+                  <td>
+                    <div style="cursor: pointer;color: blue;" (click)="goToTasksdDetails(task)"> {{task.id}}</div>
+                  </td>
                   <td>{{task.project.name}}</td>
                   <td>{{task.numberLogement}}</td>
                   <td>{{task.treatmentDate}}</td>
                   <td>{{task.siteName}}</td>
-                  <td>{{task.sadirahStatus}}</td>
+                  <td>
+                    <div [hidden]="isEditSelected">
+                      {{task.sadirahStatus}}
+                    </div>
+
+                    <div [hidden]="!isEditSelected">
+                      <select [(ngModel)]="task.sadirahStatus" class="form-control custom-select"
+                              name="sadirah">
+                        <option selected="" disabled="">Select one</option>
+                        <option selected="sadirahStatus">Vertical en validation ingénierie</option>
+                        <option selected="sadirahStatus">Vertical controle gomaj</option>
+                        <option selected="sadirahStatus">Vertical en déploiement</option>
+                      </select>
+                    </div>
+                  </td>
+
                   <td>{{task.employee.firstName}} {{task.employee.lastName}}</td>
                   <td>
-                    <span class="badge badge-secondary" *ngIf="task.taskStatus == 'en attente'">{{task.taskStatus}}</span>
-                    <span class="badge badge-primary" *ngIf="task.taskStatus == 'en cours'">{{task.taskStatus}}</span>
-                    <span class="badge badge-danger" *ngIf="task.taskStatus == 'bloqué'">{{task.taskStatus}}</span>
-                    <span class="badge badge-info" *ngIf="task.taskStatus == 'livré'">{{task.taskStatus}}</span>
-                    <span class="badge badge-success" *ngIf="task.taskStatus == 'validé'">{{task.taskStatus}}</span>
+                    <div [hidden]="isEditSelected">
+                      <span class="badge badge-secondary"
+                            *ngIf="task.taskStatus == 'en attente'">{{task.taskStatus}}</span>
+                      <span class="badge badge-primary" *ngIf="task.taskStatus == 'en cours'">{{task.taskStatus}}</span>
+                      <span class="badge badge-danger" *ngIf="task.taskStatus == 'bloqué'">{{task.taskStatus}}</span>
+                      <span class="badge badge-info" *ngIf="task.taskStatus == 'livré'">{{task.taskStatus}}</span>
+                      <span class="badge badge-success" *ngIf="task.taskStatus == 'validé'">{{task.taskStatus}}</span>
+                    </div>
+
+                    <div [hidden]="!isEditSelected">
+                      <select [(ngModel)]="task.taskStatus" class="form-control custom-select" name="taskStatus">
+                        <option selected="" disabled="">Select one</option>
+                        <option selected="taskStatus">en attente</option>
+                        <option selected="taskStatus">en cours</option>
+                        <option selected="taskStatus">livré</option>
+                        <option selected="taskStatus">bloqué</option>
+                      </select>
+                    </div>
 
                   </td>
                   <td>{{task.lastModifiedDate}}</td>
-                  <td>{{task.comment}}</td>
+
+                  <td>
+                    <div [hidden]="isEditSelected">
+                      {{task.comment}}
+                    </div>
+
+                    <div [hidden]="!isEditSelected">
+                       <textarea class="form-control" rows="4" name="comment" [(ngModel)]="task.comment"
+                       >
+                       </textarea>
+                    </div>
+                  </td>
+
                   <td>{{task.validationDate}}</td>
+                  <td>
+                    <div class="btn btn-info btn-secondary" [hidden]="isEditSelected" style="margin-right: 2px;"
+                         (click)="selectEditTask(task)">
+                      <i class="fas fa-pencil-alt">
+                      </i>
+                    </div>
+                    <div class="btn btn-danger btn-secondary" [hidden]="!isEditSelected" style="margin-right: 2px;"
+                         (click)="cancelTask(task)">
+                      <i class="fas fa-times">
+                      </i>
+                    </div>
+                    <div class="btn btn-success btn-secondary" [hidden]="!isEditSelected" (click)="saveTask(task)">
+                      <i class="fas fa-save">
+                      </i>
+                    </div>
+                  </td>
                 </tr>
                 </tbody>
               </table>

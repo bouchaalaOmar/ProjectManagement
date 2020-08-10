@@ -118,7 +118,7 @@ export class EditTaskComponent implements OnInit {
     let currentDate = new Date();
     //(<FormControl> this.editForm.controls['lastModifiedDate']).setValue("new value");
 
-    this.editForm.patchValue({"lastModifiedDate": this.datePipe.transform(currentDate, 'DD-MM-YYYY')});
+    this.editForm.patchValue({"lastModifiedDate": this.datePipe.transform(currentDate, 'yyyy-MM-dd')});
   }
 
 }

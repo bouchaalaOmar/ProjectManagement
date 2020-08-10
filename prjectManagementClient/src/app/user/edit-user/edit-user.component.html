@@ -97,7 +97,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
-                    <input id="dateOfBirth" type="text" class="form-control" data-inputmask-alias="datetime"
+                    <input id="dateOfBirth" type="text" bsDatepicker class="form-control" data-inputmask-alias="datetime"
                            data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false"
                            formControlName="dateOfBirth" name="dateOfBirth"
                            [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }">
@@ -146,8 +146,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
-                    <input id="dateOfHire" type="text" class="form-control" data-inputmask-alias="datetime"
-                           data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false"
+                    <input id="dateOfHire" type="text" bsDatepicker class="form-control" data-inputmask-alias="datetime"
+                           data-inputmask-inputformat="YYYY-MM-DD" data-mask="YYYY-MM-DD" im-insert="false"
                            formControlName="dateOfHire" name="dateOfHire"
                            [ngClass]="{ 'is-invalid': submitted && f.dateOfHire.errors }">
                     <div *ngIf="submitted && f.dateOfHire.errors" class="invalid-feedback">

@@ -42,14 +42,14 @@
                   <th>Derniére modif</th>
                   <th>Commentaire</th>
                   <th style="width: 60%">Date de validation</th>
-                  <th style="width: 80%">Action</th>
+                  <th style="width: 50%">Action</th>
 
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let task of tasks; let i = index" role="row" class="odd">
                   <td>{{task.numberLogement}}</td>
-                  <td>{{task.treatmentDate}}</td>
+                  <td>{{task.treatmentDate | date :  "dd-MM-y"}}</td>
                   <td>{{task.siteName}}</td>
                   <td>{{task.sadirahStatus}}</td>
                   <td>{{task.employee.firstName}} {{task.employee.lastName}}</td>
@@ -61,9 +61,9 @@
                     <span class="badge badge-success" *ngIf="task.taskStatus == 'validé'">{{task.taskStatus}}</span>
 
                   </td>
-                  <td>{{task.lastModifiedDate}}</td>
+                  <td>{{task.lastModifiedDate | date :  "dd-MM-y"}}</td>
                   <td>{{task.comment}}</td>
-                  <td>{{task.validationDate}}</td>
+                  <td>{{task.validationDate | date :  "dd-MM-y"}}</td>
                   <td>
                     <div class="btn btn-info btn-secondary" style="margin-right: 2px;" (click)="editTask(task)">
                       <i class="fas fa-pencil-alt">

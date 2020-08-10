@@ -41,7 +41,7 @@
                 <tbody>
                 <tr *ngFor="let project of projects; let i = index" role="row" class="odd">
                   <td>{{project.name}}</td>
-                  <td>{{project.startDate}}</td>
+                  <td>{{project.startDate | date :  "dd-MM-y"}}</td>
                   <td>{{project.manager.email}}</td>
                   <td>{{project.customer.name}}</td>
                   <td>
