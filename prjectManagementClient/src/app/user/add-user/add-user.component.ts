@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../services/user.service";
@@ -9,7 +9,7 @@ import {UserService} from "../services/user.service";
 })
 export class AddUserComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder,private router: Router, private apiService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private apiService: UserService) {}
 
   addForm: FormGroup;
   error = '';
@@ -18,7 +18,7 @@ export class AddUserComponent implements OnInit {
   roles: any;
 
   ngOnInit() {
-    if(!window.localStorage.getItem('currentUser')) {
+    if (!window.localStorage.getItem('currentUser')) {
       this.router.navigate(['login']);
       return;
     }
@@ -39,7 +39,7 @@ export class AddUserComponent implements OnInit {
     });
   }
 
-  get f() { return this.addForm.controls; }
+  get f() {return this.addForm.controls;}
 
   onSubmit() {
     this.submitted = true;
@@ -49,11 +49,11 @@ export class AddUserComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.addForm.value.password = Math.random().toString(36).slice(-8);
-    this.roles.push( this.addForm.value.roles );
-    this.addForm.value.roles =  this.roles;
+    this.addForm.value.password = "changeMe";
+    this.roles.push(this.addForm.value.roles);
+    this.addForm.value.roles = this.roles;
     this.apiService.createUser(this.addForm.value)
-      .subscribe( data => {
+      .subscribe(data => {
         this.router.navigate(['list-user']);
       },
         error => {
@@ -61,7 +61,7 @@ export class AddUserComponent implements OnInit {
           this.error = error;
           this.loading = false;
           alert(error);
-      });
+        });
   }
 
 }
