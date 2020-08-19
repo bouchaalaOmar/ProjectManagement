@@ -28,6 +28,7 @@ import {DatePipe} from "@angular/common";
 import {MakeTaskComponent} from "./task/make-task/make-task.component";
 import {BsDatepickerConfig, BsDatepickerModule} from "ngx-bootstrap/datepicker";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ProfileUserComponent} from "./user/profile-user/profile-user.component";
 
 // used to create fake backend
 // import { fakeBackendProvider } from './_helpers';
@@ -45,6 +46,7 @@ export function getDatepickerConfig(): BsDatepickerConfig {
     AddUserComponent,
     EditUserComponent,
     ListUserComponent,
+    ProfileUserComponent,
     AddProjectComponent,
     EditProjectComponent,
     ListProjectComponent,

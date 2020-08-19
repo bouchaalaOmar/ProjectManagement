@@ -1,0 +1,225 @@
+<div class="wrapper">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Profile</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle"
+                       src="assets/avatar5.png"
+                       alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center">{{userInfo.firstName}} {{userInfo.lastName}}</h3>
+
+                <br/>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item">
+                    <b>Email</b> <a class="float-right">{{userInfo.email}}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>CIN</b> <a class="float-right">{{userInfo.cin}}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Matricule Fiscale</b> <a class="float-right">{{userInfo.registrationNumber}}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Date d'embauche</b> <a class="float-right">{{userInfo.dateOfHire}}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Rôle</b> <a class="float-right">{{userInfo.roles}}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a  (click)="ChangePasswordSelected = true" class="btn btn-primary btn-block"><b>Changer le mot de passe</b></a>
+                  </li>
+                </ul>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div class="card">
+              <div class="card-body">
+                <div class="tab-content">
+                  <div [ngClass]="{ 'active': !ChangePasswordSelected }" class="tab-pane" id="info">
+                    <form [formGroup]="updateProfileForm" (ngSubmit)="onSubmit()">
+                    <div class="hidden">
+                      <input type="hidden" formControlName="id" placeholder="id" name="id" class="form-control" id="id">
+                    </div>
+                    <div class="form-group row">
+                      <label for="firstName" class="col-sm-2 col-form-label">Nom</label>
+                      <div class="col-sm-10">
+                        <input type="text" id="firstName" class="form-control" formControlName="firstName"
+                               name="firstName"
+                               [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" placeholder="Nom">
+                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                          <div *ngIf="f.firstName.errors.required">Nom est obligatoire</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="lastName" class="col-sm-2 col-form-label">Prénom</label>
+                      <div class="col-sm-10">
+                        <input type="text" id="lastName" class="form-control" formControlName="lastName" name="lastName"
+                               [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" placeholder="Prénom">
+                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                          <div *ngIf="f.lastName.errors.required">Prénom est obligatoire</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="gender" class="col-sm-2 col-form-label">Sexe</label>
+                      <div class="col-sm-10">
+                        <select id="gender" class="form-control custom-select" formControlName="gender" name="gender"
+                                [ngClass]="{ 'is-invalid': submitted && f.roles.errors }">
+                          <option selected="" disabled="">Select one</option>
+                          <option value="M">Masculin</option>
+                          <option value="F">Feminin</option>
+                        </select>
+                        <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                          <div *ngIf="f.gender.errors.required">Sexe est obligatoire</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="address" class="col-sm-2 col-form-label">Address</label>
+                      <div class="col-sm-10">
+                       <textarea id="address" class="form-control" rows="4" formControlName="address" name="address"
+                                 [ngClass]="{ 'is-invalid': submitted && f.address.errors }" placeholder="Address">
+                       </textarea>
+                        <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                          <div *ngIf="f.address.errors.required">Address est obligatoire</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="phone" class="col-sm-2 col-form-label">Tel</label>
+                      <div class="col-sm-10">
+                        <input type="text" id="phone" class="form-control" formControlName="phone" name="phone"
+                               [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" placeholder="Tel">
+                        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                          <div *ngIf="f.phone.errors.required">Tel est obligatoire</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="dateOfBirth" class="col-sm-2 col-form-label">Date de naissance:</label>
+                      <div class="col-sm-10">
+                        <input id="dateOfBirth" type="text" bsDatepicker class="form-control" data-inputmask-alias="datetime"
+                               data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false"
+                               formControlName="dateOfBirth" name="dateOfBirth" placeholder="Date de naissance"
+                               [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }">
+                        <div *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback">
+                          <div *ngIf="f.dateOfBirth.errors.required">Date de naissance est obligatoire</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="placeOfBirth" class="col-sm-2 col-form-label">Lieu de naissance:</label>
+                      <div class="col-sm-10">
+                        <input id="placeOfBirth" type="text" id="inputPlaceOfBirth" class="form-control"
+                               formControlName="placeOfBirth" name="placeOfBirth" placeholder="Lieu de naissance"
+                               [ngClass]="{ 'is-invalid': submitted && f.placeOfBirth.errors }">
+                        <div *ngIf="submitted && f.placeOfBirth.errors" class="invalid-feedback">
+                          <div *ngIf="f.placeOfBirth.errors.required">Lieu de naissance est obligatoire</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="offset-sm-2 col-sm-10">
+                        <button type="submit" class="btn btn-danger">Submit</button>
+                      </div>
+                    </div>
+                  </form>
+                  </div>
+                  <div [ngClass]="{ 'active': ChangePasswordSelected }" class="tab-pane" id="changePassword">
+                    <form [formGroup]="updatePasswordForm" (ngSubmit)="onUpdatePassword()">
+                      <div class="form-group row">
+                        <label for="newPassword" class="col-sm-2 col-form-label">Nouveau mot de passe</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="newPassword" class="form-control" formControlName="newPassword"
+                                 name="newPassword"
+                                 [ngClass]="{ 'is-invalid': submitted && f1.newPassword.errors }" placeholder="Nom">
+                          <div *ngIf="submitted && f1.newPassword.errors" class="invalid-feedback">
+                            <div *ngIf="f1.newPassword.errors.required">Nouveau mot de passe est obligatoire</div>
+                            <div *ngIf="f.password.errors.minlength">Mot de passe doit être d'au moins 8 caractères</div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="confirmPassword" class="col-sm-2 col-form-label">Confirmer mot de passe</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="confirmPassword" class="form-control" formControlName="confirmPassword" name="confirmPassword"
+                                 [ngClass]="{ 'is-invalid': submitted && f1.confirmPassword.errors }" placeholder="Prénom">
+                          <div *ngIf="submitted && f1.confirmPassword.errors" class="invalid-feedback">
+                            <div *ngIf="f1.confirmPassword.errors.required">Confirm Password est obligatoire</div>
+                            <div *ngIf="f1.confirmPassword.errors.mustMatch">les mots de passe doivent correspondre</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                          <button type="submit" class="btn btn-danger">Submit</button>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-2">
+                          <button (click)="ChangePasswordSelected = false" type="button" class="btn btn-secondary">Cancel</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.5
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>

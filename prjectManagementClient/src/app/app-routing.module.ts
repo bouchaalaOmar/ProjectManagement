@@ -18,6 +18,7 @@ import {AddTaskComponent} from "./task/add-task/add-task.component";
 import {ListTaskComponent} from "./task/list-task/list-task.component";
 import {EditTaskComponent} from "./task/edit-task/edit-task.component";
 import {MakeTaskComponent} from "./task/make-task/make-task.component";
+import {ProfileUserComponent} from "./user/profile-user/profile-user.component";
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'add-user', component: AddUserComponent },
   { path: 'edit-user', component: EditUserComponent },
   { path: 'list-user', component: ListUserComponent },
+  { path: 'profile-user', component: ProfileUserComponent },
   { path: 'add-project', component: AddProjectComponent },
   { path: 'edit-project', component: EditProjectComponent },
   { path: 'list-project', component: ListProjectComponent },

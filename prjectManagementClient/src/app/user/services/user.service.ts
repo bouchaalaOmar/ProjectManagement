@@ -38,4 +38,8 @@ export class UserService {
   deleteUser(id: number): Observable<User> {
     return this.http.delete<User>(`${environment.apiUrl}/users/${id}`);
   }
+
+  updatePassword(newPassword:any){
+    return this.http.put<User>(`${environment.apiUrl}/users/changePassword`, newPassword);
+  }
 }
