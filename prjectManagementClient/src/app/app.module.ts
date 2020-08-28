@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule, Pipe, PipeTransform} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +29,7 @@ import {MakeTaskComponent} from "./task/make-task/make-task.component";
 import {BsDatepickerConfig, BsDatepickerModule} from "ngx-bootstrap/datepicker";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ProfileUserComponent} from "./user/profile-user/profile-user.component";
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 // used to create fake backend
 // import { fakeBackendProvider } from './_helpers';
@@ -57,7 +58,8 @@ export function getDatepickerConfig(): BsDatepickerConfig {
     AddTaskComponent,
     EditTaskComponent,
     ListTaskComponent,
-    MakeTaskComponent
+    MakeTaskComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -37,7 +37,7 @@ export class AppComponent  implements OnInit{
 
   ngOnInit(): void {
     if(this.isAdmin){
-      this.router.navigate(['/list-user']);
+      this.router.navigate(['/dashboard']);
     }else if(this.isProjectManager){
       this.router.navigate(['/pm-project']);
     }else if(this.isEmployee){

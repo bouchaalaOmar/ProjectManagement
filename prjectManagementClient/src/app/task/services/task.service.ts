@@ -29,6 +29,10 @@ export class TaskService {
     }
   }
 
+  getAllTask(): Observable<Task[]> {
+      return this.http.get<Task[]>(`${environment.apiUrl}/tasks?filter[include][0][relation]=employee&filter[include][1][relation]=project`);
+  }
+
   getTaskById(id: number): Observable<Task> {
     return this.http.get<Task>(`${environment.apiUrl}/tasks/${id}`);
   }

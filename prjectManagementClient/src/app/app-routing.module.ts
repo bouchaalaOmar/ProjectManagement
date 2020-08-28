@@ -19,11 +19,13 @@ import {ListTaskComponent} from "./task/list-task/list-task.component";
 import {EditTaskComponent} from "./task/edit-task/edit-task.component";
 import {MakeTaskComponent} from "./task/make-task/make-task.component";
 import {ProfileUserComponent} from "./user/profile-user/profile-user.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 
 const routes: Routes = [
   {path: '', component: AppComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
+  {path: 'dashboard', component: DashboardComponent},
   { path: 'add-user', component: AddUserComponent },
   { path: 'edit-user', component: EditUserComponent },
   { path: 'list-user', component: ListUserComponent },

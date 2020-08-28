@@ -9,6 +9,9 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
+          <a routerLink="/dashboard" class="nav-link">Dashboard</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
           <a routerLink="/list-user" class="nav-link">Gestion des utiisateurs</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
@@ -95,6 +98,14 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
+            <li class="nav-item">
+              <a routerLink="/dashboard" class="nav-link">
+                <i class="nav-icon fa fa-tachometer-alt"></i>
+                <p>
+                  Dashboard
+                </p>
+              </a>
+            </li>
             <li class="nav-item">
               <a routerLink="/list-user" class="nav-link">
                 <i class="nav-icon far fa-user"></i>

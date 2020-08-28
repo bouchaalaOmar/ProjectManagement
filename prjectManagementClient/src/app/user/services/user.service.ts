@@ -42,4 +42,8 @@ export class UserService {
   updatePassword(newPassword:any){
     return this.http.put<User>(`${environment.apiUrl}/users/changePassword`, newPassword);
   }
+
+  getEmployees(): Observable<User[]> {
+    return this.http.get<User[]>(`${environment.apiUrl}/users?filter[where][roles][eq]=["emp"]`);
+  }
 }
