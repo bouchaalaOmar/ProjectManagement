@@ -23,7 +23,9 @@
           <div class="card">
             <!-- /.card-header -->
             <div class="card-body">
-              <table datatable [dtOptions]="dtMakeTaskOptions" [dtTrigger]="dtMakeTaskTrigger" class="row-border hover">
+              <table datatable [dtOptions]="dtMakeTaskOptions" [dtTrigger]="dtMakeTaskTrigger"
+                     class="row-border hover" cellspacing="0"
+                     width="100%">
                 <thead>
                 <tr>
                   <th>Numéro</th>
@@ -36,8 +38,13 @@
                   <th>Etat</th>
                   <th>Derniére modif</th>
                   <th>Commentaire</th>
-                  <th style="width: 40%">Date de validation</th>
-                  <th style="width: 80%">Action</th>
+                  <th>APD</th>
+                  <th>DOE</th>
+                  <th>Modelisation</th>
+                  <th>PDS</th>
+                  <th>SRO</th>
+                  <th>Date de validation</th>
+                  <th style="width: 10%">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -95,12 +102,55 @@
                     </div>
 
                     <div [hidden]="!isEditSelected">
-                       <textarea class="form-control" rows="4" name="comment" [(ngModel)]="task.comment"
-                       >
+                       <textarea class="form-control" rows="4" name="comment" [(ngModel)]="task.comment">
                        </textarea>
                     </div>
                   </td>
 
+                  <td>
+                    <i [hidden]="isEditSelected" [ngClass]="{'fas fa-check-circle green':task.APD, 'fa fa-times-circle': !task.APD}">
+                    </i>
+                    <div [hidden]="!isEditSelected">
+                      <input type="checkbox" class="form-control" rows="4" name="PDS" [(ngModel)]="task.APD"/>
+                    </div>
+                  </td>
+
+                  <td>
+                    <i [hidden]="isEditSelected"
+                       [ngClass]="{'fas fa-check-circle green':task.DOE, 'fa fa-times-circle': !task.DOE}">
+                    </i>
+                    <div [hidden]="!isEditSelected">
+                      <input type="checkbox" class="form-control" rows="4" name="PDS" [(ngModel)]="task.DOE"/>
+                    </div>
+                  </td>
+
+                  <td>
+                    <i [hidden]="isEditSelected"
+                       [ngClass]="{'fas fa-check-circle green':task.Modelisation, 'fa fa-times-circle': !task.Modelisation}">
+                    </i>
+                    <div [hidden]="!isEditSelected">
+                      <input type="checkbox" class="form-control" rows="4" name="PDS" [(ngModel)]="task.Modelisation"/>
+                    </div>
+                  </td>
+
+                  <td>
+                    <div [hidden]="isEditSelected">
+                      {{task.PDS}}
+                    </div>
+
+                    <div [hidden]="!isEditSelected">
+                       <input class="form-control" rows="4" name="PDS" [(ngModel)]="task.PDS"/>
+                    </div>
+                  </td>
+                  <td>
+                    <div [hidden]="isEditSelected">
+                      {{task.SRO}}
+                    </div>
+
+                    <div [hidden]="!isEditSelected">
+                       <input class="form-control" rows="4" name="SRO" [(ngModel)]="task.SRO"/>
+                    </div>
+                  </td>
                   <td>{{task.validationDate}}</td>
                   <td>
                     <div class="btn btn-info btn-secondary" [hidden]="isEditSelected" style="margin-right: 2px;"

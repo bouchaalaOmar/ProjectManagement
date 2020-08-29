@@ -29,41 +29,41 @@
                 <div class="hidden">
                   <input type="hidden" formControlName="id" placeholder="id" name="id" class="form-control" id="id">
                 </div>
-                <div class="form-group" >
+                <div class="form-group">
                   <label for="numberLogement">Nombre de logement</label>
                   <input type="number" id="numberLogement" class="form-control" formControlName="numberLogement"
                          name="numberLogement"
-                         [ngClass]="{'is-invalid': submitted && f.numberLogement.errors}" [attr.disabled]="isEmp?'':null">
+                         [ngClass]="{'is-invalid': submitted && f.numberLogement.errors}"
+                         [attr.disabled]="isEmp?'':null">
                   <div *ngIf="submitted && f.numberLogement.errors" class="invalid-feedback">
                     <div *ngIf="f.numberLogement.errors.required">Nombre de logement est obligatoire</div>
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label>Date de traitement:</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
-                    <input id="treatmentDate" type="text" bsDatepicker class="form-control" data-inputmask-alias="datetime"
+                    <input id="treatmentDate" type="text" bsDatepicker class="form-control"
+                           data-inputmask-alias="datetime"
                            data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false"
                            formControlName="treatmentDate" name="treatmentDate"
-                           [ngClass]="{ 'is-invalid': submitted && f.treatmentDate.errors }" [attr.disabled]="isEmp?'':null">
+                           [ngClass]="{ 'is-invalid': submitted && f.treatmentDate.errors }"
+                           [attr.disabled]="isEmp?'':null">
                     <div *ngIf="submitted && f.treatmentDate.errors" class="invalid-feedback">
                       <div *ngIf="f.treatmentDate.errors.required">Date de traitement est obligatoire</div>
                     </div>
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label for="siteName">Nom du site</label>
                   <input type="text" id="siteName" class="form-control" formControlName="siteName" name="siteName"
-                         [ngClass]="{ 'is-invalid': submitted && f.siteName.errors }"  [attr.disabled]="isEmp?'':null">
+                         [ngClass]="{ 'is-invalid': submitted && f.siteName.errors }" [attr.disabled]="isEmp?'':null">
                   <div *ngIf="submitted && f.siteName.errors" class="invalid-feedback">
                     <div *ngIf="f.siteName.errors.required">Nom du site est obligatoire</div>
                   </div>
                 </div>
-
                 <div class="form-group" [hidden]="isEmp">
                   <label for="employeeId">Employé</label>
                   <select id="employeeId" class="form-control custom-select" formControlName="employeeId"
@@ -92,11 +92,11 @@
                   <select id="taskStatus" class="form-control custom-select" formControlName="taskStatus"
                           name="taskStatus" (change)="onChangeTaskStatus()" [attr.disabled]="isEmp?null:''">
                     <option selected="" disabled="">Select one</option>
-                    <option selected="taskStatus" >en attente</option>
-                    <option selected="taskStatus" >en cours</option>
-                    <option selected="taskStatus" >livré</option>
-                    <option selected="taskStatus" >bloqué</option>
-                    <option [hidden]="true"  selected="taskStatus" >validé</option>
+                    <option selected="taskStatus">en attente</option>
+                    <option selected="taskStatus">en cours</option>
+                    <option selected="taskStatus">livré</option>
+                    <option selected="taskStatus">bloqué</option>
+                    <option [hidden]="true" selected="taskStatus">validé</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -105,12 +105,38 @@
                             [attr.disabled]="isEmp?null:''">
                   </textarea>
                 </div>
+                <div class="form-group">
+                  <label for="APD">APD</label>
+                  <input type="checkbox" id="APD" class="form-control" rows="4" formControlName="APD" name="APD"
+                         [attr.disabled]="isEmp?null:''"/>
+                </div>
+                <div class="form-group">
+                  <label for="DOE">DOE</label>
+                  <input type="checkbox" id="DOE" class="form-control" rows="4" formControlName="DOE" name="DOE"
+                         [attr.disabled]="isEmp?null:''"/>
+                </div>
+                <div class="form-group">
+                  <label for="Modelisation">Modelisation</label>
+                  <input type="checkbox" id="Modelisation" class="form-control" rows="4" formControlName="Modelisation"
+                         name="Modelisation" [attr.disabled]="isEmp?null:''"/>
+                </div>
+                <div class="form-group">
+                  <label for="PDS">PDS</label>
+                  <input type="text" id="PDS" class="form-control" rows="4" formControlName="PDS" name="PDS"
+                         placeholder="PDS" [attr.disabled]="isEmp?null:''"/>
+                </div>
+                <div class="form-group">
+                  <label for="SRO">SRO</label>
+                  <input type="text" id="SRO" class="form-control" rows="4" formControlName="SRO" name="SRO"
+                         placeholder="SRO" [attr.disabled]="isEmp?null:''"/>
+                </div>
               </div>
-              <!-- /.card -->
-              <div class="card-footer">
-                <a href="#" class="btn btn-secondary" routerLink="/make-task">Cancel</a>
-                <input [attr.disabled]="editForm.value.taskStatus == 'validé'?'':null" type="submit" value="Modifier" class="btn btn-success float-right">
-              </div>
+            </div>
+            <!-- /.card -->
+            <div class="card-footer">
+              <a href="#" class="btn btn-secondary" routerLink="/make-task">Cancel</a>
+              <input [attr.disabled]="editForm.value.taskStatus == 'validé'?'':null" type="submit" value="Modifier"
+                     class="btn btn-success float-right">
             </div>
           </div>
         </div>

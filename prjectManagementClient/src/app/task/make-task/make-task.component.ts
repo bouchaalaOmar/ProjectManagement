@@ -7,8 +7,6 @@ import {Subject} from "rxjs/index";
 import {Project} from "../../_models/project";
 import {DatePipe} from "@angular/common";
 import {first} from "rxjs/operators";
-import {SadirahStatus} from "../../_models/sadirahStatus";
-import {TaskStatus} from "../../_models/taskStatus";
 
 @Component({
   selector: 'app-make-task',
@@ -40,6 +38,9 @@ export class MakeTaskComponent implements OnInit {
       this.router.navigate(['login']);
       return;
     }
+    this.dtMakeTaskOptions = {
+      scrollX: true
+    };
     this.currentUser = JSON.parse(this.currentUser);
 
     this.loading = true;

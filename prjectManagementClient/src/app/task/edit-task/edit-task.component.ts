@@ -52,6 +52,11 @@ export class EditTaskComponent implements OnInit {
       lastModifiedDate: [''],
       comment: [''],
       validationDate: [''],
+      APD:  [''],
+      DOE:  [''],
+      Modelisation:  [''],
+      PDS:  [''],
+      SRO:  ['']
     });
     this.loading = true;
 

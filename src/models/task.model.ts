@@ -60,6 +60,36 @@ export class Task extends Entity {
         nullable: true
     })
     validationDate: string;
+    @property({
+        type: 'boolean',
+        required: false,
+        nullable: true
+    })
+    APD: string;
+    @property({
+        type: 'boolean',
+        required: false,
+        nullable: true
+    })
+    DOE: string;
+    @property({
+        type: 'boolean',
+        required: false,
+        nullable: true
+    })
+    Modelisation : string;
+    @property({
+        type: 'string',
+        required: false,
+        nullable: true
+    })
+    PDS: string;
+    @property({
+        type: 'string',
+        required: false,
+        nullable: true
+    })
+    SRO: string;
 
     @belongsTo(() => Project, {name: 'project'})
     projectId: number;

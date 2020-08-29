@@ -27,8 +27,7 @@ export class AddTaskComponent implements OnInit {
     }
     this.loading = true;
 
-    //TODO RETURNS only USERS WITH ROLE Emp
-    this.userService.getUsers()
+    this.userService.getEmployees()
       .subscribe( data => {
         this.employees =  data;
         this.loading = false;

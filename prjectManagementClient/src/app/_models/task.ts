@@ -13,4 +13,9 @@ export class Task {
   lastModifiedDate: string;
   comment: string;
   validationDate: string;
+  APD: string;
+  DOE: string;
+  Modelisation: string;
+  PDS: string;
+  SRO: string;
 }
