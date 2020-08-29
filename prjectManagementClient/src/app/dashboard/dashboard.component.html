@@ -74,6 +74,12 @@
                   <th>Derniére modif</th>
                   <th>Commentaire</th>
                   <th style="width: 60%">Date de validation</th>
+                  <th>APD</th>
+                  <th>DOE</th>
+                  <th>Modelisation</th>
+                  <th>PDS</th>
+                  <th>SRO</th>
+
 
                 </tr>
                 </thead>
@@ -97,6 +103,22 @@
                   <td>{{task.lastModifiedDate}}</td>
                   <td>{{task.comment}}</td>
                   <td>{{task.validationDate}}</td>
+                  <td>
+                    <i [hidden]="isEditSelected" [ngClass]="{'fas fa-check-circle green':task.APD, 'fa fa-times-circle': !task.APD}">
+                    </i>
+                  </td>
+
+                  <td>
+                    <i [ngClass]="{'fas fa-check-circle green':task.DOE, 'fa fa-times-circle': !task.DOE}">
+                    </i>
+                  </td>
+                  <td>
+                    <i [ngClass]="{'fas fa-check-circle green':task.Modelisation, 'fa fa-times-circle': !task.Modelisation}">
+                    </i>
+                  </td>
+
+                  <td>{{task.PDS}}</td>
+                  <td>{{task.SRO}}</td>
                 </tr>
                 </tbody>
               </table>

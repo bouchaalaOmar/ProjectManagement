@@ -108,7 +108,7 @@
                   </td>
 
                   <td>
-                    <i [hidden]="isEditSelected" [ngClass]="{'fas fa-check-circle green':task.APD, 'fa fa-times-circle': !task.APD}">
+                    <i [hidden]="isEditSelected" [ngClass]="{'fas fa-check-circle':task.APD, 'fa fa-times-circle': !task.APD}">
                     </i>
                     <div [hidden]="!isEditSelected">
                       <input type="checkbox" class="form-control" rows="4" name="PDS" [(ngModel)]="task.APD"/>
@@ -117,7 +117,7 @@
 
                   <td>
                     <i [hidden]="isEditSelected"
-                       [ngClass]="{'fas fa-check-circle green':task.DOE, 'fa fa-times-circle': !task.DOE}">
+                       [ngClass]="{'fas fa-check-circle':task.DOE, 'fa fa-times-circle': !task.DOE}">
                     </i>
                     <div [hidden]="!isEditSelected">
                       <input type="checkbox" class="form-control" rows="4" name="PDS" [(ngModel)]="task.DOE"/>
@@ -126,7 +126,7 @@
 
                   <td>
                     <i [hidden]="isEditSelected"
-                       [ngClass]="{'fas fa-check-circle green':task.Modelisation, 'fa fa-times-circle': !task.Modelisation}">
+                       [ngClass]="{'fas fa-check-circle':task.Modelisation, 'fa fa-times-circle': !task.Modelisation}">
                     </i>
                     <div [hidden]="!isEditSelected">
                       <input type="checkbox" class="form-control" rows="4" name="PDS" [(ngModel)]="task.Modelisation"/>
